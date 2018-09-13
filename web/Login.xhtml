@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Login</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:growl autoUpdate="true"/>
+            <p:dialog closable="false" modal="true" visible="true" resizable="false" header="Login">
+                <h:panelGrid columns="2">
+
+                    <h:outputLabel value="Login"/>
+                    <p:inputText id="Login" value="#{Login.login}" rendered="true" requiredMessage="O campo de Login é obrigatorio"/>
+
+                    <h:outputLabel value="Senha"/>
+                    <p:inputText id="Senha" value="#{Login.senha}" rendered="true" requiredMessage="O campo da Senha é obrigatorio"/>
+
+                    <p:growl id="growl" life="2000" />
+                    <p:commandLink id="criarConta" oncomplete="location.href = 'Cadastro.xhtml'"  update="growl">
+                        <h:outputText value="Criar Conta" />
+                    </p:commandLink>
+                    
+                    
+                   
+                </h:panelGrid>
+               
+
+                <div style="text-align: right; margin-top: 30px;">
+                    <p:commandButton id="botaoLogar" value="Logar" action="#{ControladorLogin.validarLogin(Login)}" icon="ui-icon-check"/>
+                    <h:message showDetail="true" for="user"/>
+                    <h:message showDetail="true" for="senha"/>
+
+                </div>
+
+            </p:dialog> 
+             
+
+        </h:form>
+        
+    </h:body>
+  
+</html>
+

@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Cadastro</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:panel header="Criar conta" >
+                <p:growl autoUpdate="true"/>
+                <p:panelGrid columns="2" id="tabela">
+                    
+                    <h:outputText value="Nome"/>
+                    <p:inputText id="nome" value="#{Login.nome}" rendered="true" requiredMessage="o campo é obrigatorio"/>
+                    
+                    <h:outputText value="Login"/>
+                    <p:inputText id="login" value="#{Login.login}" rendered="true" requiredMessage="o campo é obrigatorio"/>
+                    
+                    <h:outputText value="Senha"/>
+                    <p:inputText id="senha" value="#{Login.senha}" rendered="true" requiredMessage="o campo é obrigatorio"/>
+                    
+                 
+                </p:panelGrid>
+                
+                <p:commandButton type="Submit" value="Cadastrar" icon="ui-icon-disk"  action="#{ControladorLogin.inserirLogin(Login)}" oncomplete="location.href = 'Login.xhtml'">
+                
+                    <p:confirm header="Confimar" message="Confirmar" icon="ui-icon-alert" />
+                </p:commandButton>
+                
+                <p:commandButton  value="Cancelar" oncomplete="location.href='Login.xhtml'" >
+                
+                    <p:confirm header="Confimar" message="Deseja mesmo cancelar o cadastro" icon="ui-icon-alert"/>
+                </p:commandButton>
+                
+            </p:panel>
+            
+            <p:confirmDialog global="true" showEffect="fafe" hideEffect="explode" closable="false">
+                <div style="text-align: certer; width: 100%">
+                    <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update=":form_Cada"/>
+                    <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-check"/>
+                </div>
+            </p:confirmDialog>
+        </h:form>
+    </h:body>
+</html>
+
